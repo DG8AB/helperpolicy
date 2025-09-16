@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Terms of Service</title>
+  <style>
+    body {
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      position: relative;
+    }
+    .container {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem 3rem;
+      max-width: 600px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+      line-height: 1.6;
+      z-index: 1;
+    }
+    h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.1rem;
+      color: #333;
+    }
+    #goBackBtn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      font-size: 1rem;
+      transition: background-color 0.2s ease;
+      z-index: 10;
+    }
+    #goBackBtn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <button id="goBackBtn">Go back</button>
+  <div class="container">
+    <h1>Terms of Service</h1>
+    <p>
+      You are allowed to use Helper for any purpose, <strong>except for illegal content</strong>.<br />
+      By using this service, you agree not to upload, share, or distribute any content that violates applicable laws or regulations.
+    </p>
+  </div>
+
+  <script>
+    const goBackBtn = document.getElementById('goBackBtn');
+
+    goBackBtn.addEventListener('click', () => {
+      // If there's a valid referrer and it's from the same origin, go back
+      const referrer = document.referrer;
+      if (referrer && referrer.startsWith(window.location.origin)) {
+        window.history.back();
+      } else {
+        // Otherwise redirect to homepage or a safe page
+        window.location.href = '/';
+      }
+    });
+  </script>
+</body>
+</html>
