@@ -2,77 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service</title>
   <style>
-    body {
-      background: #f7f7f7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+    :root {
+      --background-color: #363232;
+      --background-alt: #3b3b3b;
+      --alt-color: #e8b7b7;
+      --font-color: rgb(230, 228, 228);
+      --purple-font: rgb(182, 182, 253);
+      --grey-font: rgb(124, 123, 123);
+    }
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      position: relative;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: var(--background-color);
+      font-family: 'Roboto', sans-serif;
+      color: var(--font-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+      text-align: center;
     }
     .container {
-      background: white;
-      border-radius: 16px;
+      background-color: var(--background-alt);
+      border-radius: 25px;
       padding: 2rem 3rem;
-      max-width: 600px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-      line-height: 1.6;
-      z-index: 1;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      margin-bottom: 2rem;
     }
     h1 {
+      font-size: 2.5rem;
+      color: var(--alt-color);
       margin-bottom: 1rem;
       font-weight: 700;
-      font-size: 2rem;
     }
     p {
-      font-size: 1.1rem;
-      color: #333;
+      font-size: 1.25rem;
+      line-height: 1.6;
+      color: var(--font-color);
     }
     #goBackBtn {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      padding: 0.5rem 1rem;
+      padding: 0.7rem 2rem;
       border: none;
-      background-color: #007bff;
-      color: white;
-      border-radius: 8px;
+      background-color: var(--alt-color);
+      color: var(--background-color);
+      border-radius: 12px;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      font-size: 1rem;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
       transition: background-color 0.2s ease;
-      z-index: 10;
+      user-select: none;
     }
     #goBackBtn:hover {
-      background-color: #0056b3;
+      background-color: #c79292;
     }
   </style>
 </head>
-<body>
-  <button id="goBackBtn">Go back</button>
+<body class="ui-2">
   <div class="container">
     <h1>Terms of Service</h1>
-    <p>
-      You are allowed to use Helper for any purpose, <strong>except for illegal content</strong>.<br />
-      By using this service, you agree not to upload, share, or distribute any content that violates applicable laws or regulations.
-    </p>
+    <p>You can use Helper for anything except illegal content.</p>
   </div>
+  <button id="goBackBtn">Go back</button>
 
   <script>
     const goBackBtn = document.getElementById('goBackBtn');
-
     goBackBtn.addEventListener('click', () => {
-      // If there's a valid referrer and it's from the same origin, go back
-      const referrer = document.referrer;
-      if (referrer && referrer.startsWith(window.location.origin)) {
+      if (document.referrer && document.referrer.startsWith(window.location.origin)) {
         window.history.back();
       } else {
-        // Otherwise redirect to homepage or a safe page
         window.location.href = '/';
       }
     });
